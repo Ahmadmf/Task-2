@@ -1,3 +1,13 @@
+//----------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------
+//---------------------Function of this file is do dynamic filtering on the basis of 'dacaying particle' and 'final particles'------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+//--------------------------------------------------23 branching fraction from gsoc_hflav.json--------------------------------------------------
 var data = [
   {
     "name": "BR_Lambdab0_K-_D0_p.-BR_Lambdab0_pi-_D0_p",
@@ -418,21 +428,30 @@ var data = [
   ]
 },
 ];
+//--------------------------------------------------------------------------------------------------------------------------------------//
+
+
+
+//--------------------- function to go for calculation page by taking selected measurement through user --------------------------------//
+function calculateAverage (branchingFractionName) {
+  console.log(branchingFractionName);
+   localStorage.setItem("BranchingFractionName",branchingFractionName);
+  window.open("./component/averageCalculation.html");
+
+}
+//---------------------------------------------------------------------------------------------------------------------------------------//
 
 
 $(document).ready(function () { 
 
-    // ITERATING THROUGH OBJECTS 
+
+  //=====================Filtering data from gsoc_hflav.json data where Bbaryon decays to D===========================//
     var Bbaryon_D_data='';
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1];
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1];
     if(decaying_particle==='Bbaryon' && final_particle==='D'){ 
       Bbaryon_D_data += '<tr>'; 
       Bbaryon_D_data += '<td>' + 
@@ -447,27 +466,26 @@ $(document).ready(function () {
       Bbaryon_D_data  += '<td>' + 
         value.average + '</td>'; 
       Bbaryon_D_data  += '<td>' + 
-        value.error + '</td>'; 
+        value.error + '</td>';
+      Bbaryon_D_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
 
       Bbaryon_D_data  += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO Bbaryon_D_table TABLE 
     $('#Bbaryon_D_table').append(Bbaryon_D_data ); 
+//==========================================================================================================================//
+   
+    
 
 
-
-    // ITERATING THROUGH OBJECTS
+//================================== Filtering data from gsoc_hflav.json data where Bbaryon decays to cc=============================//
     var Bbaryon_cc_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1]; 
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1]; 
       if(decaying_particle==='Bbaryon' && final_particle==='cc'){ 
       Bbaryon_cc_data += '<tr>'; 
       Bbaryon_cc_data += '<td>' + 
@@ -484,25 +502,24 @@ $(document).ready(function () {
       Bbaryon_cc_data += '<td>' + 
         value.error + '</td>'; 
 
+      Bbaryon_cc_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
+      
       Bbaryon_cc_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    ////INSERTING ROWS INTO Bbaryon_cc_table TABLE 
     $('#Bbaryon_cc_table').append(Bbaryon_cc_data); 
+//============================================================================================================================//
 
 
 
-    // ITERATING THROUGH OBJECTS 
+//====================================== Filtering data from gsoc_hflav.json data where Bbaryon decays to baryon ==================================//
     var Bbaryon_baryon_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1];
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1];
       if(decaying_particle==='Bbaryon' && final_particle==='baryon'){ 
       Bbaryon_baryon_data += '<tr>'; 
       Bbaryon_baryon_data += '<td>' + 
@@ -519,25 +536,24 @@ $(document).ready(function () {
       Bbaryon_baryon_data += '<td>' + 
         value.error + '</td>'; 
 
+      Bbaryon_baryon_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>';  
+
       Bbaryon_baryon_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO Bbaryon_baryon_table TABLE 
     $('#Bbaryon_baryon_table').append(Bbaryon_baryon_data);
+//=================================================================================================================================//
 
 
     
-    // ITERATING THROUGH OBJECTS 
+//====================================== Filtering data from gsoc_hflav.json data where Bbaryon decays to other ==================================//
     var Bbaryon_other_data=''; 
       $.each(data, function (key, value) { 
-        var cat=value.category;
-        var str =cat.split("/");
-        var decaying_particle=str[0];
-        var final_particle=str[1];
-    
-    
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+        var branchingFractionCategory=value.category;
+        var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+        var decaying_particle=splitBrachingFractionCategory[0];
+        var final_particle=splitBrachingFractionCategory[1];
         if(decaying_particle==='Bbaryon' && final_particle==='other'){ 
           Bbaryon_other_data += '<tr>'; 
           Bbaryon_other_data += '<td>' + 
@@ -552,26 +568,28 @@ $(document).ready(function () {
           Bbaryon_other_data += '<td>' + 
             value.average + '</td>'; 
           Bbaryon_other_data += '<td>' + 
-            value.error + '</td>'; 
+            value.error + '</td>';
+            
+          Bbaryon_other_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
     
           Bbaryon_other_data += '</tr>'; 
         };
      }); 
-        //INSERTING ROWS INTO TABLE 
+        //INSERTING ROWS INTO Bbaryon_other_table TABLE 
     $('#Bbaryon_other_table').append(Bbaryon_other_data); 
+//===================================================================================================================================//
 
 
-    // ITERATING THROUGH OBJECTS 
+
+
+
+//====================================== Filtering data from gsoc_hflav.json data where B decays to cc ==================================//
     var B_cc_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1];
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1];
       if(decaying_particle==='B' && final_particle==='cc'){ 
       B_cc_data += '<tr>'; 
       B_cc_data += '<td>' + 
@@ -588,24 +606,26 @@ $(document).ready(function () {
       B_cc_data += '<td>' + 
         value.error + '</td>'; 
 
+      B_cc_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
+
       B_cc_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO B_cc_table TABLE 
     $('#B_cc_table').append(B_cc_data);
+//====================================================================================================================================//
 
 
-    // ITERATING THROUGH OBJECTS 
+
+
+
+//====================================== Filtering data from gsoc_hflav.json data where B decays to DD ==================================//
     var B_DD_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1];
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1];
       if(decaying_particle==='B' && final_particle==='DD'){ 
       B_DD_data += '<tr>'; 
       B_DD_data += '<td>' + 
@@ -621,26 +641,27 @@ $(document).ready(function () {
         value.average + '</td>'; 
       B_DD_data += '<td>' + 
         value.error + '</td>'; 
+      
+      B_DD_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
 
       B_DD_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO B_DD_table TABLE 
     $('#B_DD_table').append(B_DD_data);
+//=============================================================================================================================================//
 
 
 
-    // ITERATING THROUGH OBJECTS 
+
+
+//====================================== Filtering data from gsoc_hflav.json data where B decays to other ==================================//
     var B_other_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1];
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1];
       if(decaying_particle==='B' && final_particle==='other'){ 
       B_other_data += '<tr>'; 
       B_other_data += '<td>' + 
@@ -657,24 +678,26 @@ $(document).ready(function () {
       B_other_data += '<td>' + 
         value.error + '</td>'; 
 
+      B_other_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>';  
+
       B_other_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO B_other_table TABLE 
     $('#B_other_table').append(B_other_data);
+//===========================================================================================================================================//
 
 
-    // ITERATING THROUGH OBJECTS 
+
+
+
+//====================================== Filtering data from gsoc_hflav.json data where Bd decays to D ==================================//
     var Bd_D_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1];
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1];
       if(decaying_particle==='Bd' && final_particle==='D'){ 
       Bd_D_data += '<tr>'; 
       Bd_D_data += '<td>' + 
@@ -691,25 +714,27 @@ $(document).ready(function () {
       Bd_D_data += '<td>' + 
         value.error + '</td>'; 
 
+      Bd_D_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>';  
+
       Bd_D_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO Bd_D_table TABLE 
     $('#Bd_D_table').append(Bd_D_data);
+//=======================================================================================================================================//
 
 
 
-    // ITERATING THROUGH OBJECTS 
+
+
+
+//====================================== Filtering data from gsoc_hflav.json data where Bd decays to DD =========================================//
     var Bd_DD_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1];
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1];
       if(decaying_particle==='Bd' && final_particle==='DD'){ 
       Bd_DD_data += '<tr>'; 
       Bd_DD_data += '<td>' + 
@@ -726,25 +751,26 @@ $(document).ready(function () {
       Bd_DD_data += '<td>' + 
         value.error + '</td>'; 
 
+      Bd_DD_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
+
       Bd_DD_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO Bd_DD_table TABLE 
     $('#Bd_DD_table').append(Bd_DD_data);
+//========================================================================================================================//
 
 
 
-    // ITERATING THROUGH OBJECTS 
+
+
+//====================================== Filtering data from gsoc_hflav.json data where Bd decays to baryon ==================================//
     var Bd_baryon_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1]; 
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1]; 
       if(decaying_particle==='Bd' && final_particle==='baryon'){ 
       Bd_baryon_data += '<tr>'; 
       Bd_baryon_data += '<td>' + 
@@ -760,28 +786,27 @@ $(document).ready(function () {
         value.average + '</td>'; 
       Bd_baryon_data += '<td>' + 
         value.error + '</td>'; 
+      
+      Bd_baryon_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>';  
 
       Bd_baryon_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO Bd_baryon_table TABLE 
     $('#Bd_baryon_table').append(Bd_baryon_data);
+//====================================================================================================================================================//
 
 
 
 
-    // ITERATING THROUGH OBJECTS 
+
+//====================================== Filtering data from gsoc_hflav.json data where Bd decays to other =============================================//
     var Bd_other_data=''; 
     $.each(data, function (key, value) { 
-      var cat=value.category;
-      var str =cat.split("/");
-      var decaying_particle=str[0];
-      var final_particle=str[1];
-
-
-
-      //CONSTRUCTION OF ROWS HAVING 
-      // DATA FROM JSON OBJECT
+      var branchingFractionCategory=value.category;
+      var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+      var decaying_particle=splitBrachingFractionCategory[0];
+      var final_particle=splitBrachingFractionCategory[1];
       if(decaying_particle==='Bd' && final_particle==='other'){ 
       Bd_other_data += '<tr>'; 
       Bd_other_data += '<td>' + 
@@ -798,25 +823,26 @@ $(document).ready(function () {
       Bd_other_data += '<td>' + 
         value.error + '</td>'; 
 
+      Bd_other_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>';  
+
       Bd_other_data += '</tr>'; 
       };
     }); 
-    //INSERTING ROWS INTO TABLE 
+    //INSERTING ROWS INTO Bd_other_table TABLE 
     $('#Bd_other_table').append(Bd_other_data);
+//=====================================================================================================================================================//
 
 
 
-      // ITERATING THROUGH OBJECTS 
+
+
+//====================================== Filtering data from gsoc_hflav.json data where Bc decays to DD ==============================================//
       var Bc_DD_data=''; 
       $.each(data, function (key, value) { 
-        var cat=value.category;
-        var str =cat.split("/");
-        var decaying_particle=str[0];
-        var final_particle=str[1];
-  
-  
-        //CONSTRUCTION OF ROWS HAVING 
-        // DATA FROM JSON OBJECT
+        var branchingFractionCategory=value.category;
+        var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+        var decaying_particle=splitBrachingFractionCategory[0];
+        var final_particle=splitBrachingFractionCategory[1];
         if(decaying_particle==='Bc' && final_particle==='DD'){ 
         Bc_DD_data += '<tr>'; 
         Bc_DD_data += '<td>' + 
@@ -832,26 +858,27 @@ $(document).ready(function () {
           value.average + '</td>'; 
         Bc_DD_data += '<td>' + 
           value.error + '</td>'; 
+        
+        Bc_DD_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
   
         Bc_DD_data += '</tr>'; 
         };
       }); 
-      //INSERTING ROWS INTO TABLE 
+      //INSERTING ROWS INTO Bc_DD_table TABLE 
       $('#Bc_DD_table').append(Bc_DD_data);
+//==========================================================================================================================================================//
 
 
 
-      // ITERATING THROUGH OBJECTS 
+
+
+//====================================== Filtering data from gsoc_hflav.json data where Bc decays to cc  ==================================================//
       var Bc_cc_data=''; 
       $.each(data, function (key, value) { 
-        var cat=value.category;
-        var str =cat.split("/");
-        var decaying_particle=str[0];
-        var final_particle=str[1];
-  
-  
-        //CONSTRUCTION OF ROWS HAVING 
-        // DATA FROM JSON OBJECT
+        var branchingFractionCategory=value.category;
+        var splitBrachingFractionCategory=branchingFractionCategory.split("/");
+        var decaying_particle=splitBrachingFractionCategory[0];
+        var final_particle=splitBrachingFractionCategory[1];
         if(decaying_particle==='Bc' && final_particle==='cc'){ 
         Bc_cc_data += '<tr>'; 
         Bc_cc_data += '<td>' + 
@@ -867,25 +894,28 @@ $(document).ready(function () {
           value.average + '</td>'; 
         Bc_cc_data += '<td>' + 
           value.error + '</td>'; 
+        
+        Bc_cc_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>';  
   
         Bc_cc_data += '</tr>'; 
         };
       }); 
-      //INSERTING ROWS INTO TABLE 
+      //INSERTING ROWS INTO Bc_cc_table TABLE 
       $('#Bc_cc_table').append(Bc_cc_data);
+//==============================================================================================================================================================//
 
 
-      // ITERATING THROUGH OBJECTS 
+
+
+
+
+//====================================== Filtering data from gsoc_hflav.json data where Bc decays to B ==================================//
       var Bc_B_data=''; 
       $.each(data, function (key, value) { 
-        var cat=value.category;
-        var str =cat.split("/");
-        var decaying_particle=str[0];
-        var final_particle=str[1];
-  
-  
-        //CONSTRUCTION OF ROWS HAVING 
-        // DATA FROM JSON OBJECT
+        var branchingFractionCategory=value.category;
+        var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+        var decaying_particle=splitBrachingFractionCategory[0];
+        var final_particle=splitBrachingFractionCategory[1];
         if(decaying_particle==='Bc' && final_particle==='B'){ 
         Bc_B_data += '<tr>'; 
         Bc_B_data += '<td>' + 
@@ -901,26 +931,26 @@ $(document).ready(function () {
           value.average + '</td>'; 
         Bc_B_data += '<td>' + 
           value.error + '</td>'; 
+        
+        Bc_B_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
   
         Bc_B_data += '</tr>'; 
         };
       }); 
-      //INSERTING ROWS INTO TABLE 
+      //INSERTING ROWS INTO Bc_B_table TABLE 
       $('#Bc_B_table').append(Bc_B_data);
+//===================================================================================================================================//
 
 
 
-      // ITERATING THROUGH OBJECTS 
+
+//====================================== Filtering data from gsoc_hflav.json data where Bu decays to cc ==================================//
       var Bu_cc_data=''; 
       $.each(data, function (key, value) { 
-        var cat=value.category;
-        var str =cat.split("/");
-        var decaying_particle=str[0];
-        var final_particle=str[1];
-  
-  
-        //CONSTRUCTION OF ROWS HAVING 
-        // DATA FROM JSON OBJECT
+        var branchingFractionCategory=value.category;
+        var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+        var decaying_particle=splitBrachingFractionCategory[0];
+        var final_particle=splitBrachingFractionCategory[1];
         if(decaying_particle==='Bu' && final_particle==='cc'){ 
         Bu_cc_data += '<tr>'; 
         Bu_cc_data += '<td>' + 
@@ -936,26 +966,27 @@ $(document).ready(function () {
           value.average + '</td>'; 
         Bu_cc_data += '<td>' + 
           value.error + '</td>'; 
+
+        Bu_cc_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>';  
   
         Bu_cc_data += '</tr>'; 
         };
       }); 
-      //INSERTING ROWS INTO TABLE 
+      //INSERTING ROWS INTO Bu_cc_table TABLE 
       $('#Bu_cc_table').append(Bu_cc_data);
+//========================================================================================================================================//
 
 
 
-      // ITERATING THROUGH OBJECTS 
+
+
+//====================================== Filtering data from gsoc_hflav.json data where Bu decays to baryon ==================================//
       var Bu_baryon_data=''; 
       $.each(data, function (key, value) { 
-        var cat=value.category;
-        var str =cat.split("/");
-        var decaying_particle=str[0];
-        var final_particle=str[1];
-  
-  
-        //CONSTRUCTION OF ROWS HAVING 
-        // DATA FROM JSON OBJECT
+        var branchingFractionCategory=value.category;
+        var splitBrachingFractionCategory =branchingFractionCategory.split("/");
+        var decaying_particle=splitBrachingFractionCategory[0];
+        var final_particle=splitBrachingFractionCategory[1];
         if(decaying_particle==='Bu' && final_particle==='baryon'){ 
         Bu_baryon_data += '<tr>'; 
         Bu_baryon_data += '<td>' + 
@@ -971,19 +1002,14 @@ $(document).ready(function () {
           value.average + '</td>'; 
         Bu_baryon_data += '<td>' + 
           value.error + '</td>'; 
+
+        Bu_baryon_data += '<td><input type="button" value="Calculate Average" onclick="calculateAverage(\''+ value.name +'\')"/>'+'</input></td>'; 
   
         Bu_baryon_data += '</tr>'; 
         };
       }); 
-      //INSERTING ROWS INTO TABLE 
+      //INSERTING ROWS INTO Bu_baryon_table TABLE 
       $('#Bu_baryon_table').append(Bu_baryon_data);
-
-
-
-
-
-
-
-
+//==========================================================================================================================================//
 
 });

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>HFLAV B</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="../js/averageCalculation.js"></script>
+  <link type="text/css" rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+   <!--------- NavBar -------------------->
+  <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">HFLAV B to Charm</a>
+      </div>
+      <ul class="nav navbar-nav">
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <b> Bbaryon </b> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../Bbaryon_D.html">D</a></li>
+            <li><a href="../Bbaryon_cc.html">cc</a></li>
+            <li><a href="../Bbaryon_baryon.html">baryon</a></li>
+            <li><a href="../Bbaryon_other.html">other</a></li>
+          </ul>
+        </li>
+  
+        <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <b> B </b> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../B_cc.html"> cc </a></li>
+            <li><a href="../B_DD.html"> DD </a></li>
+            <li><a href="../B_other.html"> other </a></li>
+          </ul>
+        </li>
+  
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <b>Bd</b> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../Bd_D.html">D</a></li>
+            <li><a href="../Bd_DD.html">DD</a></li>
+            <li><a href="../Bd_baryon.html">baryon</a></li>
+            <li><a href="../Bd_other.html">other</a></li>
+          </ul>
+        </li>
+  
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <b>Bc</b> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../Bc_DD.html">DD</a></li>
+            <li><a href="../Bc_cc.html">cc</a></li>
+            <li><a href="../Bc_B.html">B</a></li>
+          </ul>
+        </li>
+  
+      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#"> <b>Bu</b> <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../Bu_cc.html">cc</a></li>
+            <li><a href="../Bu_baryon.html">baryon</a></li>
+          </ul>
+        </li>
+        
+      </ul>
+    </div>
+  </nav> 
+   <!--------- NavBar -------------------->
+
+   <!--  Display Braching Fraction Name  -->
+   <h1>Name: <p id="name"></p></h1>
+
+  <!--  Display Braching Fraction Latex  -->
+   <h3>Latex: <p id="latex"></p></h3>
+
+  <!--  Display Braching Fraction Category  -->
+   <h3>Category: <p id="category"></p></h3>
+
+  <!--  Display Braching Fraction Average  -->
+   <h5>Average:  <p id="average"></p></h5>
+
+  <!--  Display Braching Fraction Error  -->
+   <h5>Error:  <p id="error"></p></h5>
+
+  <br>
+  <br>
+
+  <h3>Select Measurements to Calculate Average and Error</h3>
+
+<!--  Display Braching Fraction  MeasurementS Data and take input through Checkbox -->
+  <form id="measurementsDataForm" onsubmit="return false"></form>
+
+<!--  Display Calculated Average and Error -->
+  <div id="result"></div>
+
+</body>
+</html>
