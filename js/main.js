@@ -27,17 +27,21 @@ var data = [
     ]
 },
 {
-    "name": "BR_Lambdab0_p_K-_chic2.-BR_Lambdab0_p_K-_chic1",
-    "latex": "\\frac{ {\\cal{B}}( \\Lambda_b^0 \\to \\chi_{c2} p K^- ) }{ {\\cal{B}}( \\Lambda_b^0 \\to \\chi_{c1} p K^- ) }",
-    "category": "Bbaryon/cc",
-    "average": 1.02,
-    "error": 0.11419055689206256,
-    "measurements": [
-        {
-            "value": 1.02,
-            "error": 0.11532562594670798
-        }
-    ]
+  "name": "BR_Lambdab0_psi2S_Lambda0.-BR_Lambdab0_Jpsi_Lambda0",
+  "latex": "\\frac{{\\cal{B}} ( \\Lambda_b^{0} \\to \\psi(2S) \\Lambda )}{{\\cal{B}} ( \\Lambda_b^{0} \\to J/\\psi \\Lambda )}",
+  "category": "Bbaryon/cc",
+  "average": 0.611687170296534,
+  "error": 0.037933438132664914,
+  "measurements": [
+      {
+          "value": 5.13,
+          "error": 0.34088121098118623
+      },
+      {
+          "value": 0.501,
+          "error": 0.04255584566190643
+      }
+  ]
 },
 {
     "name": "transv_polarb_Lambdab0_Jpsi_Lambda0",
@@ -57,17 +61,21 @@ var data = [
     ]
 },
 {
-    "name": "BR_Lambdab0_SigmacS02520_p_p-.BR_SigmacS02520_Lambdac+_pi-.-BR_Lambdab0_Lambdac+_p_p-_pi-",
-    "latex": "\\frac { {\\cal{B}} ( \\Lambda_b^{0} \\to \\Sigma_c(2520)^{*0} p \\bar{p} ) \\times {\\cal{B}} ( \\Sigma_c(2520)^{*0} \\to \\Lambda_c^{+} \\pi^{-} )  }{ {\\cal{B}} ( \\Lambda_b^{0} \\to \\Lambda_c^{+} p \\bar{p} \\pi^{-} ) }",
-    "category": "Bbaryon/baryon",
-    "average": 1.19,
-    "error": 0.2441311123222267,
-    "measurements": [
-        {
-            "value": 1.19,
-            "error": 0.2814249455894058
-        }
-    ]
+  "name": "BR_Lambdab0_pi-_pi-_pi+_Lambdac+.-BR_Lambdab0_pi-_Lambdac+",
+  "latex": "\\frac{{\\cal{B}} ( \\Lambda_b^{0} \\to \\Lambda_c^{+} \\pi^{+} \\pi^{-} \\pi^{-} ) }{ {\\cal{B}} ( \\Lambda_b^{0} \\to \\Lambda_c^{+} \\pi^{-} )}",
+  "category": "Bbaryon/baryon",
+  "average": 1.5807359217767072,
+  "error": 0.19626665337673566,
+  "measurements": [
+      {
+          "value": 1.43,
+          "error": 0.24372115213907883
+      },
+      {
+          "value": 3.04,
+          "error": 0.9442148728616212
+      }
+  ]
 },
 {
     "name": "BR_Lambdab0_pi-_Lambdac+2940.BR_Lambdac+2940_D0_p.-BR_Lambdab0_pi-_Lambdac+2880.BR_Lambdac+2880_D0_p",
@@ -308,35 +316,44 @@ var data = [
   ]
 },
 
-
 {
-  "name": "BR_Bc-_Jpsi_DSs-.-BR_Bc-_Jpsi_pi-",
-  "latex": "\\frac {{\\cal{B}} (B_c^{-} \\to J/\\psi D_s^{*-})} {{\\cal{B}} (B_c^{-} \\to J/\\psi \\pi^{-})}",
+  "name": "sigma_Bc-.BR_Bc-_pi-_Jpsi.-sigma_B-.-BR_B-_K-_Jpsi",
+  "latex": "\\frac{{f_c \\times \\cal{B}} ( B_c^{-} \\to J/\\psi \\pi^{-} )}  {f_u \\times {\\cal{B}} ( B^{-} \\to J/\\psi K^{-} )}",
   "category": "Bc/cc",
-  "average": 10.4,
-  "error": 3.4957116577488523,
+  "average": 0.06652951108102867,
+  "error": 0.0018887082399077421,
   "measurements": [
       {
-          "value": 10.4,
-          "error": 3.8509739027939416
+          "value": 0.068,
+          "error": 0.0119582607431014
+      },
+      {
+          "value": 0.06830000000000001,
+          "error": 0.00220454076850486
+      },
+      {
+          "value": 0.048,
+          "error": 0.009055385138137417
       }
   ]
 },
-
 {
-  "name": "sigma_Bc-.-sigma_B-.BR_Bc-_chic0_pi-",
-  "latex": "{\\frac{f_c}{f_u}} \\times {\\cal{B}} ( B_c^{-} \\to \\chi_{c0} \\pi^{-} )",
+  "name": "BR_Bc-_pi+_pi-_pi-_Jpsi.-BR_Bc-_pi-_Jpsi",
+  "latex": "\\frac{{\\cal{B}} ( B_c^{-} \\to J/\\psi \\pi^{+} \\pi^{-} \\pi^{-} )} {{\\cal{B}} ( B_c^{-} \\to J/\\psi \\pi^{-} )}",
   "category": "Bc/cc",
-  "average": 9.800000000000001e-05,
-  "error": 3.2989960300244873e-05,
+  "average": 2.4414396886418275,
+  "error": 0.3973662279511226,
   "measurements": [
       {
-          "value": 9.800000000000001e-05,
-          "error": 3.3947692409050315e-05
+          "value": 2.41,
+          "error": 0.5547972602672079
+      },
+      {
+          "value": 2.55,
+          "error": 0.9270382947861432
       }
   ]
 },
-
 
 {
   "name": "BR_Bc+_Bs_pi+",
